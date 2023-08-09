@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textColor="#000000"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
     <TextView
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textColor="#000000"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
     <TextView
@@ -38,6 +40,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textColor="#000000"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
     <TextView
@@ -46,6 +49,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textColor="#000000"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
     <Button
@@ -57,5 +61,6 @@
         android:textColor="#ffffff"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
+        android:textStyle="bold"
         android:onClick="onReserveButtonClicked" /> <!-- Add the onClick attribute -->
 </LinearLayout>

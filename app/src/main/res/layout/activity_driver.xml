@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".DriverActivity">
 
+
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"  >
-    </com.baidu.mapapi.map.MapView>
+        android:clickable="true"></com.baidu.mapapi.map.MapView>
 
     <ImageButton
         android:id="@+id/button_findpark"
@@ -20,17 +20,19 @@
         android:src="@drawable/bn_ic_short_fun_car_manager"
         android:contentDescription="停车场信息"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:layout_gravity="center_vertical|end" />
+        android:layout_gravity="center|end" />
 
     <!-- 悬浮按钮 -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <Button
+        android:id="@+id/button_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_dialog_email" />
+        android:text="历史记录"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:contentDescription="历史记录"
+        android:background="@color/snow"
+        android:layout_gravity="center|start" />
 
     <ImageButton
         android:id="@+id/btn_getPlace"
@@ -52,9 +54,10 @@
     <ListView
         android:id="@+id/searchResult"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:background="@color/material_on_background_emphasis_high_type"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/b"
+        android:layout_gravity="top"
         android:visibility="gone" />
 
     <com.google.android.material.appbar.AppBarLayout
@@ -70,4 +73,15 @@
             app:popupTheme="@style/Theme.Lmap.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:textSize="30sp"
+        android:textColor="@android:color/black"
+        android:background="@color/snow"
+        android:textStyle="bold"
+        android:hint="请输入您想查看的位置" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -5,7 +5,12 @@ import android.app.Application;
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapApplication extends Application {
+
+    public List<ParkingHistory> historyList = new ArrayList<>();
     @Override
     public void onCreate() {
         super.onCreate();

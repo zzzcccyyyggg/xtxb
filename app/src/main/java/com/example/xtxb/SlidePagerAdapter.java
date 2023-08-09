@@ -16,13 +16,15 @@ public class SlidePagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0) {
             return new FragmentOne(); // 第一个界面的Fragment
-        } else {
+        } else if (position == 1) {
             return new FragmentTwo(); // 第二个界面的Fragment
+        } else {
+            return new FragmentThree(); // 第三个界面的Fragment
         }
     }
 
     @Override
     public int getCount() {
-        return 2; // 总共有两个界面
+        return 3; // 总共有三个界面
     }
 }

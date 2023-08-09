@@ -18,6 +18,7 @@ public class CarDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_detail);
 
+
         // 从Intent中获取车辆信息
         String licensePlate = getIntent().getStringExtra("licensePlate");
         String owner = getIntent().getStringExtra("owner");

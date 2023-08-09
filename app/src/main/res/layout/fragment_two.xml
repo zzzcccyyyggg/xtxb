@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-    android:background="@drawable/c">
+    android:background="@drawable/c"
+    android:orientation="vertical">
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recyclerView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/buttonLayout"
-    android:padding="8dp"
-    android:clipToPadding="false" />
+
+    <TextView
+        android:id="@+id/parkingNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_gravity="top"
+        android:background="@color/white"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="快来停车吧停车场" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonLayout"
+        android:padding="8dp"
+        android:clipToPadding="false" />
 
 <LinearLayout
     android:id="@+id/buttonLayout"
@@ -20,7 +34,6 @@ android:layout_height="match_parent"
     android:orientation="horizontal"
     android:layout_alignParentBottom="true">
 
-
 </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

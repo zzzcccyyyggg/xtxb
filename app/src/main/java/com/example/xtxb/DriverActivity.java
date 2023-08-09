@@ -2,6 +2,7 @@ package com.example.xtxb;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -54,6 +55,8 @@ public class DriverActivity extends AppCompatActivity {
     private File mSDCardPath=null;
     private static final String APP_FOLDER_NAME = "lmap";
     private PoiInfo mDestation=null;
+    private EditText Search;
+    private String place;
     class MyLocationListener extends BDAbstractLocationListener {
         private boolean isFirstLoc=true;
         private boolean autoLocation=false;
@@ -110,6 +113,8 @@ public class DriverActivity extends AppCompatActivity {
                 listView.setOnScrollListener(new AbsListView.OnScrollListener() {
                     @Override
                     public void onScrollStateChanged(AbsListView view, int scrollState) {
+                        EditText Search = findViewById(R.id.search);
+                        String place =  Search.getText().toString(); // 获取搜索框的内容
                         if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
                             // 判断是否滚动到底部
                             if (view.getLastVisiblePosition() == view.getCount() - 1) {
@@ -118,10 +123,9 @@ public class DriverActivity extends AppCompatActivity {
                                 int totalPage = poiResult.getTotalPageNum();
                                 if (curPage < totalPage) {
                                     poiResult.setCurrentPageNum(curPage + 1);
-                                    String city = "明溪县";
-                                    String keyWord = "停车场";
+                                    String keyWord = place+"停车场";
                                     mPoiSearch.searchInCity(new PoiCitySearchOption()
-                                            .city(city)
+                                            .city(place)
                                             .keyword(keyWord)
                                             .pageNum(curPage + 1));
                                 }
@@ -204,20 +208,36 @@ public class DriverActivity extends AppCompatActivity {
         //开启地图定位图层
         mLocationClient.start();
 
-        //获得检索输入框控件
+// 获取搜索框和按钮控件
+        EditText search = findViewById(R.id.search); // 假设是EditText控件
         ImageButton button_findpark = findViewById(R.id.button_findpark);
+
+// 设置按钮的点击事件监听器
         button_findpark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String city = "明溪县";
-                String keyWord = "停车场";
+                String place = search.getText().toString(); // 获取搜索框的内容
+                String keyWord = place+"停车场";
+                Log.d("zzzccc", place);
 
                 // 执行搜索附近停车场操作
                 boolean ret = mPoiSearch.searchInCity(new PoiCitySearchOption()
-                        .city(city)
+                        .city(place)
                         .keyword(keyWord)
                         .pageNum(0));
 
+                // 在这里添加其他操作，例如更新搜索结果到界面等
+            }
+        });
+
+        //历史记录
+        Button button_history = findViewById(R.id.button_history);
+        button_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(DriverActivity.this, HistoryActivity.class);
+                startActivity(mainIntent);
+                finish();
             }
         });
         //创建poi检索实例
@@ -229,15 +249,6 @@ public class DriverActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mLocationClient.start();
-            }
-        });
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
     }
